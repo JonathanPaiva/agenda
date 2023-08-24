@@ -17,14 +17,14 @@
     </head>
     
     <body>
-        <div class="container">
+        <div class="container-fluid col-md-6 offset-md-3">
             <h2>@yield('title')</h2>
             @yield('content')
         </div>
         
         <br>
         
-        <div class="container">
+        <div class="container-fluid col-md-6 offset-md-3">
             <footer>
                 <p>Controle de Contatos - &copy; 2023 - by JonathanPaiva</p>
             </footer>

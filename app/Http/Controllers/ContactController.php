@@ -22,7 +22,6 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
-
         //$contact = Contact::create($request->all());
         $contact = new Contact;
         $contact->name = $request->name;
@@ -37,16 +36,20 @@ class ContactController extends Controller
         $contact->save();
 
         return redirect('contacts');
-
     }
 
     public function edit($id)
     {
-        //return redirect('contacts.edit');
+        $contact = Contact::findOrFail($id);
+
+        return view('contacts.edit',['contact' => $contact]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+        //dd($request);
+        Contact::findOrFail($request->id)->update($request->all());
+
         return redirect('contacts');
     }
 
