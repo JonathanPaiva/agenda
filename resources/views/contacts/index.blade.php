@@ -5,46 +5,60 @@
 @section('content')
 
 <div class="container-fluid">
+
     <div class="d-flex justify-content mb-2">
         <a type="button" class="btn btn-primary mt-2" href="/contacts/create">Adicionar</a>
     </div>
 
-    @foreach ($contacts as $contact)
+    <table class="table table-striped table-hover align-baseline">
 
-    <ul class="list-group">
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            <div class="col-3">
-                {{ $contact->name }}
-            </div>
-            <div class="col-3">
-                {{ $contact->phone }}
-            </div>
-            <div class="col-3">
-                {{ $contact->birthDate }}
-            </div>
-            <div class="col-3">
+        <thead>
+            <tr>
+              <th scope="col">Nome:</th>
+              <th scope="col">Telefone:</th>
+              <th scope="col">Data Nascimento:</th>
+              <th scope="col">Email:</th>
+              <th scope="col">Ações</th>
+            </tr>
+        </thead>
+
+       <tbody>
+
+        @foreach ($contacts as $contact)
+
+        <tr>
+            <td>{{ $contact->name }}</td>
+            <td>{{ $contact->phone }}</td>
+            <td>{{ $contact->birthDate }}</td>
+            <td>{{ $contact->email }}</td>
+            <td>
                 <div class="d-flex">
-                    <div class="me-1">
-                        <a href="/contacts/edit/{{ $contact->id }}" class="btn btn-primary " type="button">
-                            <ion-icon name="create-outline"></ion-icon>
-                            Editar
-                        </a>
-                    </div>
-                    <div class="">
-                        <form action="/contacts/{{ $contact->id }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger" type="submit">
-                                <ion-icon name="trash-outline"></ion-icon>
-                                Excluir
-                            </button>
-                        </form>
-                    </div>
+                    <a href="/contacts/edit/{{ $contact->id }}" class="btn btn-primary me-2" type="button">
+                        <ion-icon name="create-outline"></ion-icon>
+                    </a>
+
+                    <!--
+                    <form action="/contacts/{{ $contact->id }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    -->
+                    <button class="btn btn-danger" type="button"
+                    data-bs-toggle="modal" data-bs-target="#modalContactDelete-{{$contact->id}}">
+                        <ion-icon name="trash-outline"></ion-icon>
+                    </button>
+
+                    @include("contacts.delete-modal")
+
                 </div>
-            </div>
-        </li>
-    </ul>
-    @endforeach
+            </td>
+        </tr>
+
+        @endforeach
+
+        </tbody>
+
+    </table>
+
 </div>
 
 @endsection

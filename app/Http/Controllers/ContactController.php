@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ContactController extends Controller
 {
@@ -22,18 +21,8 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
-        //$contact = Contact::create($request->all());
-        $contact = new Contact;
-        $contact->name = $request->name;
-        $contact->phone = $request->phone;
-        $contact->birthDate = $request->birthDate;
-        $contact->email = $request->email;
-        $contact->observations = $request->observations;
-        $contact->image = $request->image;
-
-        //dd($contact);
-
-        $contact->save();
+        //dd($request->all());
+        Contact::create($request->all());
 
         return redirect('contacts');
     }

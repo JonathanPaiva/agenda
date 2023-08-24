@@ -40,9 +40,9 @@
                             placeholder="Digite as observações do contato" value="{{ $contact->observations }}">
             </div>
             <div class="mb-3">
-                <label for="imagem" class="form-label">Imagem:</label>
-                <input type="file" class="form-control" id="imagem"
-                        name="imagem" value="{{ $contact->observations }}">
+                <label for="image" class="form-label">Imagem:</label>
+                <input type="file" class="form-control" id="image"
+                        name="image" value="{{ $contact->image }}">
             </div>
             <div>
                 <button type="submit" class="btn btn-primary">Salvar</button>

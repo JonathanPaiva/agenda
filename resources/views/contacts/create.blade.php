@@ -32,12 +32,12 @@
                         placeholder="Digite as observações do contato">
             </div>
             <div class="mb-3">
-                <label for="imagem" class="form-label">Imagem:</label>
-                <input type="file" class="form-control" id="imagem" name="imagem">
+                <label for="image" class="form-label">Imagem:</label>
+                <input type="file" class="form-control" id="image" name="image">
             </div>
             <div>
                 <button type="submit" class="btn btn-primary">Salvar</button>
-                <a type="button" class="btn btn-danger" href="/contacts">Cancelar</a>
+                <a type="button" class="btn btn-secondary" href="/contacts">Cancelar</a>
             </div>
         </form>
     
