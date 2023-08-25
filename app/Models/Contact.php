@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
+Use App\Services\ImageTreatment;
+
+const pathImageStorage = "contacts";
 
 class Contact extends Model
 {
     use HasFactory;
     
+
     protected $fillable = [
         'name',
         'phone',
@@ -19,18 +22,20 @@ class Contact extends Model
         'image'
     ];
 
-    public static function create($contactRequest):void {
+    public static function createRegister($contactRequest):void {
 
-        //dd($contactRequest);
-        //dd(Arr::get($contactRequest,'name'));
-        $contact = new Contact;
-        $contact->name = Arr::get($contactRequest,'name');
-        $contact->phone = Arr::get($contactRequest,'phone');
-        $contact->birthDate = Arr::get($contactRequest,'birthDate');
-        $contact->email = Arr::get($contactRequest,'email');
-        $contact->observations = Arr::get($contactRequest,'observations');
-        $contact->image = Arr::get($contactRequest,'image');
+        $contact = Contact::create($contactRequest);
 
-        $contact->save();
+        $imageForTreatment = $contact->image;
+
+        if (file_exists($imageForTreatment) ) {
+            $id = $contact->id;
+
+            $fileName = ImageTreatment::getImageTreatment($imageForTreatment, pathImageStorage, $id);
+
+            $contact->image = $fileName;
+
+            $contact->save();
+        }
     }
 }

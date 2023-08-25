@@ -21,8 +21,7 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
-        //dd($request->all());
-        Contact::create($request->all());
+        Contact::createRegister($request->all());
 
         return redirect('contacts');
     }
