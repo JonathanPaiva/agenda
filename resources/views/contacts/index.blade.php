@@ -7,7 +7,10 @@
 <div class="container-fluid">
 
     <div class="d-flex justify-content mb-2">
-        <a type="button" class="btn btn-primary mt-2" href="/contacts/create">Adicionar</a>
+        <a type="button" class="btn btn-primary mt-2" href="/contacts/create">
+            <ion-icon name="add-circle-outline"></ion-icon>
+            Adicionar
+        </a>
     </div>
 
     <table class="table table-striped table-hover align-baseline">

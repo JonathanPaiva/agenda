@@ -11,6 +11,14 @@
         <form action="/contacts/update/{{ $contact->id }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
+
+            <div class="mb-1">
+                <h5 class="fw-bold">
+                    <label for="id" class="form-label">Id:</label>
+                    {{ $contact->id }}
+                </h5>
+            </div>
+
             <div class="mb-3">
                 <label for="name" class="form-label">Nome:</label>
                 <input type="text" class="form-control" id="name" name="name"
@@ -42,11 +50,21 @@
             <div class="mb-3">
                 <label for="image" class="form-label">Imagem:</label>
                 <input type="file" class="form-control" id="image"
-                        name="image" value="{{ $contact->image }}">
+                        name="image" value="{{ $contact->getImagePath($contact->image) }}">
+            <fieldset disabled>
+                <input type="text" class="form-control" id="image" disable="true"
+                        name="image" value="{{ $contact->getImagePath($contact->image) }}">
+            </fieldset>
             </div>
             <div>
-                <button type="submit" class="btn btn-primary">Salvar</button>
-                <a type="button" class="btn btn-danger" href="/contacts">Cancelar</a>
+                <button type="submit" class="btn btn-primary">
+                    <ion-icon name="save-outline"></ion-icon>
+                    Salvar
+                </button>
+                <a type="button" class="btn btn-secondary align-baseline" href="/contacts">
+                    <ion-icon name="backspace-outline"></ion-icon>
+                    Cancelar
+                </a>
             </div>
         </form>
 

@@ -35,16 +35,14 @@ class ContactController extends Controller
 
     public function update(Request $request)
     {
-        //dd($request);
-        Contact::findOrFail($request->id)->update($request->all());
+        Contact::editRegister($request);
 
         return redirect('contacts');
     }
 
     public function destroy($id)
     {
-        //dd($id);
-        Contact::findOrFail($id)->delete();
+        Contact::deleteRegister($id);
 
         return redirect('contacts');
     }

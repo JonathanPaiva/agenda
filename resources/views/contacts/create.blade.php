@@ -36,8 +36,14 @@
                 <input type="file" class="form-control" id="image" name="image">
             </div>
             <div>
-                <button type="submit" class="btn btn-primary">Salvar</button>
-                <a type="button" class="btn btn-secondary" href="/contacts">Cancelar</a>
+                <button type="submit" class="btn btn-primary">
+                    <ion-icon name="save-outline"></ion-icon>
+                    Salvar
+                </button>
+                <a type="button" class="btn btn-secondary" href="/contacts">
+                    <ion-icon name="backspace-outline"></ion-icon>
+                    Cancelar
+                </a>
             </div>
         </form>
     
