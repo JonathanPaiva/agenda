@@ -6,7 +6,7 @@
 
 <div class="container-fluid">
 
-    <div class="d-flex justify-content mb-2">
+    <div class="d-flex mb-2">
         <a type="button" class="btn btn-primary mt-2" href="/contacts/create">
             <ion-icon name="add-circle-outline"></ion-icon>
             Adicionar

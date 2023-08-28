@@ -16,8 +16,8 @@
     </head>
     
     <body>
+        @include('components.header-page')
         <div class="container-fluid col-md-6 offset-md-3">
-            <h2>@yield('title')</h2>
 
             @if (session('message'))
                 @include('components.alerts', ['type' => session('type'), 'message' => session('message')])
