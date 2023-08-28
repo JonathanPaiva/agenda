@@ -15,7 +15,7 @@ use App\Http\Controllers\ContactController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('contacts');
 });
 
 //Route::resource('/contacts', ContactController::class)->except(['show']);
