@@ -13,12 +13,16 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
         
         <title> Agenda - @yield('title')</title>
-        
     </head>
     
     <body>
         <div class="container-fluid col-md-6 offset-md-3">
             <h2>@yield('title')</h2>
+
+            @if (session('message'))
+                @include('components.alerts', ['type' => session('type'), 'message' => session('message')])
+            @endif
+
             @yield('content')
         </div>
         
@@ -35,7 +39,6 @@
         
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        
     </body>
     
 </html>

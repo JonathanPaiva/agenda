@@ -23,7 +23,9 @@ class ContactController extends Controller
     {
         Contact::createRegister($request->all());
 
-        return redirect('contacts');
+        return redirect('contacts')
+                ->with('message', 'Criado com Sucesso')
+                ->with('type', 'success');
     }
 
     public function edit($id)
@@ -37,13 +39,17 @@ class ContactController extends Controller
     {
         Contact::editRegister($request);
 
-        return redirect('contacts');
+        return redirect('contacts')
+                ->with('message', 'Editado com Sucesso')
+                ->with('type', 'success');
     }
 
     public function destroy($id)
     {
         Contact::deleteRegister($id);
 
-        return redirect('contacts');
+        return redirect('contacts')
+                ->with('message', 'Contato Excluído')
+                ->with('type', 'danger');
     }
 }
